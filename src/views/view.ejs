@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('./partials/head') %>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>Variables de Entorno</h1>
+      <% if(items){ %>
+      <div class="table-responsive">
+        <table class="table">
+          <tr class="table-dark">
+            <th>Nombre</th>
+            <th>Valor</th>
+          </tr>
+
+          <% Object.keys(items).forEach(key => {%>
+            <tr>
+              <td>
+                <%= key %>
+              </td>
+              <td>
+                <%= items[key] %>
+              </td>
+            </tr>
+          <%});%> 
+
+        </table>
+      </div>
+      <% } else{ %>
+      <h3 class="alert alert-danger">No se encontraron variables de entorno</h3>
+      <% } %>
+    </div>
+  </body>
+</html>

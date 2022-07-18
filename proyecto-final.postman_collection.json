@@ -1,0 +1,684 @@
+{
+	"info": {
+		"_postman_id": "a3d2cb81-d6a4-42ac-a581-bc52fa16e63c",
+		"name": "proyecto-final",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4098660"
+	},
+	"item": [
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "crea un carrito y devuelve su id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/cart",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vacia un carrito y lo elimina",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/cart/:cartId",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								":cartId"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "me permite listar todos los productos guardados en un carrito",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/cart/:cartId/products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								":cartId",
+								"products"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "62d011769838cc271adf53f5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "para incorporar productos al carrito por su id de carrito y id de producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/cart/:cartId/products/:productId",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								":cartId",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "62d011769838cc271adf53f5"
+								},
+								{
+									"key": "productId",
+									"value": "62c62c71fea5215fd76e9b7f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "checkout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/cart/:cartId/checkout",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								":cartId",
+								"checkout"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar un producto al carrito por su id de carrito y id de producto",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/cart/:cartId/products/:productId",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"cart",
+								":cartId",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "cartId",
+									"value": "2"
+								},
+								{
+									"key": "productId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "Products - Agregar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Producto 2\",\n  \"descripcion\": \"Este es de prueba 2\",\n  \"foto\": \"http://img.com/2\",\n  \"precio\": 1.23,\n  \"stock\": 22\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - Modificar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Producto 22222\",\n  \"descripcion\": \"Este es de prueba 222222\",\n  \"foto\": \"http://img.com/222222\",\n  \"precio\": 1.233333,\n  \"stock\": 222222\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/products/:productId",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "62c62be9fea5215fd76e9b7e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - Eliminar",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/products/:productId",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "62c62be9fea5215fd76e9b7e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - List All",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/products",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - List By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt}}",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{bearer}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/products/:productId",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								":productId"
+							],
+							"variable": [
+								{
+									"key": "productId",
+									"value": "62c62be9fea5215fd76e9b7e"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Products - Migration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Producto 2\",\n  \"descripcion\": \"Este es de prueba 2\",\n  \"foto\": \"http://img.com/2\",\n  \"precio\": 1.23,\n  \"stock\": 22\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/products/migration",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"products",
+								"migration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "daos",
+			"item": [
+				{
+					"name": "Test Memory",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/test/memory",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"memory"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test FileSystem",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/test/filesystem",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"filesystem"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test MongoDB",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/test/mongodb",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"mongodb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Firebase",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{domain}}/api/test/firebase",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"test",
+								"firebase"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "signup",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mariano@email.com\",\n    \"password\": \"123123\",\n    \"email\": \"mariano@email.com\",\n    \"direccion\": \"123 main st, miami, FL\",\n    \"edad\": 38,\n    \"telefono\": \"+5491169231894\",\n    \"foto\": \"https://i.pravatar.cc/300\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/signup",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Update access token\", function () {",
+									"    const jwt = pm.response.json().token;",
+									"    pm.environment.set(\"jwt\", jwt);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mariano@email.com\",\n    \"password\": \"123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "migration",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"mariano@email.com\",\n    \"password\": \"123123\",\n    \"email\": \"mariano@email.com\",\n    \"direccion\": \"123 main st, miami, FL\",\n    \"edad\": 38,\n    \"telefono\": \"+5491169231894\",\n    \"foto\": \"https://i.pravatar.cc/300\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/api/auth/migration",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"migration"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "chat",
+			"item": []
+		},
+		{
+			"name": "config",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{jwt}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{bearer}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{domain}}/api/config",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"api",
+						"config"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
